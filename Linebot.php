@@ -45,10 +45,4 @@ if ( sizeof($request_array['events']) > 0 ) {
  }
 }
 echo "OK";
-
-{
-    "require": {
-        "php": "^7.1.0"
-    }
- }
 ?>
