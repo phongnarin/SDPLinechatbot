@@ -75,7 +75,7 @@ function get_request($data){
    
    print_r($result);
    }
-   
+
 
  if ( sizeof($request_array['events']) > 0 ) {
    foreach ($request_array['events'] as $event) {
@@ -90,9 +90,9 @@ function get_request($data){
       $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
       $send_result = send_reply_message($API_URL.'/reply',      $POST_HEADER, $post_body);
       echo "Result: ".$send_result."\r\n";
-      //create request
 
-      post_request($text);
+      //create request
+      //post_request($text);
 
       //get request ID send back to user
       //get_request($data);
