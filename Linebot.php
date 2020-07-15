@@ -26,8 +26,26 @@ function send_reply_message($url, $post_header, $post_body)
     return $result;
 }
 
-function post_request($data){
-   $url = "http://192.168.115.120:8080/api/v3/requests";
+function post_request(){
+   $data = 'input_data= {
+      "request": {
+         "subject": "Unable to fetch mails",
+          "description": "I am unable to fetch mails from the mail server",
+          "requester": {
+              "id": "4",
+              "name": "administrator"
+          },
+         
+          "resolution": {
+              "content": "Mail Fetching Server problem has been fixed"
+          },
+          "status": {
+              "name": "Open"
+          }
+      }
+    }';
+
+   $url = "http://csiservicedesk.csigroups.com:8081/api/v3/requests";
    $post_header = array('cache-control: no-cache','Authtoken: 7FAD2C3F-A526-4CE8-B027-AB485B2832BC');
    //Get from OpManager
    $ch = curl_init($url);
@@ -38,8 +56,8 @@ function post_request($data){
      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
      $result = curl_exec($ch);
      curl_close($ch);
-     echo $data ."\n\n" ;
-     echo $result;
+     //echo $data ."\n\n" ;
+     //echo $result;
    //return $response;
  }
 
@@ -92,7 +110,7 @@ function get_request($data){
       echo "Result: ".$send_result."\r\n";
 
       //create request
-      //post_request($text);
+      post_request();
 
       //get request ID send back to user
       //get_request($data);
