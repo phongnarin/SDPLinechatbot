@@ -26,10 +26,10 @@ function send_reply_message($url, $post_header, $post_body)
     return $result;
 }
 
-function post_request(){
+function post_request($subject){
    $data = 'input_data= {
       "request": {
-         "subject": "Unable to fetch mails",
+         "subject": '.$subject.',
           "description": "I am unable to fetch mails from the mail server",
           "requester": {
               "id": "4",
@@ -110,7 +110,7 @@ function get_request($data){
       echo "Result: ".$send_result."\r\n";
 
       //create request
-      post_request();
+      post_request($text);
 
       //get request ID send back to user
       //get_request($data);
