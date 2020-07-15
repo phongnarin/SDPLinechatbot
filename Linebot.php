@@ -85,7 +85,7 @@ function get_request($data){
       $text = $event['message']['text'];
       $data = [
          'replyToken' => $reply_token,
-         'messages' => [['type' => 'text', 'text' => "Request" .$text. "has been created"]]
+         'messages' => [['type' => 'text', 'text' => "Request '" .$text. "' has been created"]]
       ];
       $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
       $send_result = send_reply_message($API_URL.'/reply',      $POST_HEADER, $post_body);
