@@ -100,17 +100,18 @@ function get_request($data){
       
       $reply_message = '';
       $reply_token = $event['replyToken'];
-      $text = $event['message']['text'];
+      //$text = $event['message']['text'];
+      $text = $event;
       $data = [
          'replyToken' => $reply_token,
          'messages' => [['type' => 'text', 'text' => "Request '" .$text. "' has been created"]]
       ];
       $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-      $send_result = send_reply_message($API_URL.'/reply',      $POST_HEADER, $post_body);
+      $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
       echo "Result: ".$send_result."\r\n";
 
       //create request
-      post_request($text);
+      //post_request($text);
 
       //get request ID send back to user
       //get_request($data);
