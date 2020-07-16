@@ -47,7 +47,7 @@ function post_request($subject){
 
    $url = "http://csiservicedesk.csigroups.com:8081/api/v3/requests";
    $post_header = array('cache-control: no-cache','Authtoken: 7FAD2C3F-A526-4CE8-B027-AB485B2832BC');
-   //Get from OpManager
+   //Create a request
    $ch = curl_init($url);
      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -101,7 +101,7 @@ function get_request($data){
       $reply_message = '';
       $reply_token = $event['replyToken'];
       //$text = $event['message']['text'];
-      $text = $event;
+      $text = json_decode($event,true);
       $data = [
          'replyToken' => $reply_token,
          'messages' => [['type' => 'text', 'text' => "Request '" .$text. "' has been created"]]
