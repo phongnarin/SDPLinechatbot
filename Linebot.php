@@ -111,7 +111,7 @@ function get_request($data){
       echo "Result: ".$send_result."\r\n";
 
       //create request
-      //post_request($text);
+      post_request($text);
 
       //get request ID send back to user
       //get_request($data);
