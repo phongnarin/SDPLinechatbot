@@ -9,7 +9,7 @@ $CHANNEL_SECRET = '46f9c64c2fa29f2d54e7ba9518244a68';
 // Set HEADER
 $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
 // Get request content
-$request = file_get_contents('php://input');
+$request = file_get_contents('php://input');  
 // Decode JSON to Array
 $request_array = json_decode($request, true);
 
@@ -102,9 +102,10 @@ function get_request($data){
       $reply_token = $event['replyToken'];
       //$text = $event['message']['text'];
       //$text = json_decode($event,true);
+      //"Request '".$text." 'has been created"
       $data = [
          'replyToken' => $reply_token,
-         'messages' => [['type' => 'text', 'text' => "Request '".$text." 'has been created"]]
+         'messages' => [['type' => 'text', 'text' => $text = json_decode($event,true)]]
       ];
       $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
       $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
