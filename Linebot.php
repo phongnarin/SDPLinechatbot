@@ -100,7 +100,7 @@ function get_request($data){
       
       $reply_message = '';
       $reply_token = $event['replyToken'];
-      $text = $event['message']['text'];
+      //$text = $event['message']['text'];
       //$text = json_decode($event,true);
       $data = [
          'replyToken' => $reply_token,
