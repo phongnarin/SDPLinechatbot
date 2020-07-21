@@ -1,4 +1,20 @@
 <?php
+$serverName = "192.168.115.202"; //serverName\instanceName ถ้าฐานข้อมูลอยู่ในเครื่องเราใช้ localhost 
+$connectionInfo = array(
+    "Database" => "linebot",
+    "UID" => "sa",
+    "PWD" => "P@ssw0rd"
+);
+
+$conn = sqlsrv_connect( $serverName, $connectionInfo);
+
+if ( $conn ) {
+    echo "Connection established.<br />";
+} else {
+    echo "Connection could not be established.<br />";
+    die( print_r( sqlsrv_errors(), true));
+}
+
 // URL API LINE
 $API_URL = 'https://api.line.me/v2/bot/message';
 // ใส่ Channel access token (long-lived)
@@ -93,7 +109,6 @@ function get_request($data){
    
    print_r($result);
    }
-
 
  if ( sizeof($request_array['events']) > 0 ) {
    foreach ($request_array['events'] as $event) {
